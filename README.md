@@ -1,3 +1,3 @@
-# AR-Sample
+# 16 Squares
 
-Testing AR out with a Unity project that runs on desktop and exports to Android
+An AR app showing the history of Blacksburg's 16 Squares.
