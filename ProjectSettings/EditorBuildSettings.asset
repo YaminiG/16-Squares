@@ -4,7 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/artestvu.unity
-    guid: 03d1c1db555f7e5468c27dee9b7936a5
+  m_Scenes: []
