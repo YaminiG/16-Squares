@@ -13,17 +13,20 @@ public class ResetButtonScript : MonoBehaviour {
     private static GameObject currentModelObject;
     private static Action callbackbackback;
     private static Button resetButton;
+    private static RectTransform rectTransform;
     private static float xPos;
     private static float yPos;
 
 
     void Start ()
     {
-        RectTransform rectTransform = GetComponent<RectTransform>();
+        rectTransform = GetComponent<RectTransform>();
         Rect rect = rectTransform.rect;
-        rectTransform.sizeDelta = new Vector2(Screen.width / 6, Screen.height / 8);
-        xPos = rect.width / 2 + 40.0f;
-        yPos = rect.height / 2 + 30.0f;
+        float newWidth = Screen.width / 6;
+        float newHeight = Screen.height / 8;
+        rectTransform.sizeDelta = new Vector2(newWidth, newHeight);
+        xPos = newWidth / 2 + 20.0f;
+        yPos = newHeight / 2 + 20.0f;
         buttonObject = GameObject.Find("ResetButton");
         resetButton = buttonObject.GetComponent<Button>();
         resetButton.onClick.AddListener(OnResetButtonClicked);
@@ -53,12 +56,12 @@ public class ResetButtonScript : MonoBehaviour {
     public static void EnableButton()
     {
         isActive = true;
-        resetButton.transform.position = new Vector3(xPos, yPos, 0.0f);
+        rectTransform.anchoredPosition = new Vector3(xPos, yPos, 0.0f);
     }
 
     public static void DisableButton()
     {
         isActive = false;
-        resetButton.transform.position = new Vector3(-999f, -999f, 0.0f);
+        rectTransform.anchoredPosition = new Vector3(-9999.0f, yPos, 0.0f);
     }
 }

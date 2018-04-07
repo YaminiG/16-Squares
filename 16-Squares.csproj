@@ -330,6 +330,7 @@
     <Compile Include="Assets\LeanTouch\Scripts\LeanSnapshot.cs" />
     <Compile Include="Assets\LeanTouch\Scripts\LeanTouch.cs" />
     <Compile Include="Assets\ModelScript.cs" />
+    <Compile Include="Assets\PositionDictionary.cs" />
     <Compile Include="Assets\ResetButtonScript.cs" />
     <Compile Include="Assets\SliderScript.cs" />
     <Compile Include="Assets\TextDictionaryData.cs" />

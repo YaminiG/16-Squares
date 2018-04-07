@@ -72,6 +72,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
         var canvasComponents = GetComponentsInChildren<Canvas>(true);
+        var terrainComponents = GetComponentsInChildren<Terrain>(true);
 
         // Enable rendering:
         foreach (var component in rendererComponents)
@@ -84,6 +85,10 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         // Enable canvas':
         foreach (var component in canvasComponents)
             component.enabled = true;
+
+        // Enable terrain':
+        foreach (var component in terrainComponents)
+            component.enabled = true;
     }
 
 
@@ -92,6 +97,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
         var canvasComponents = GetComponentsInChildren<Canvas>(true);
+        var terrainComponents = GetComponentsInChildren<Terrain>(true);
 
         // Disable rendering:
         foreach (var component in rendererComponents)
@@ -103,6 +109,10 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
         // Disable canvas':
         foreach (var component in canvasComponents)
+            component.enabled = false;
+
+        // Disable terrain':
+        foreach (var component in terrainComponents)
             component.enabled = false;
     }
 

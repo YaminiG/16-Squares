@@ -15,12 +15,13 @@ public class SliderScript : MonoBehaviour {
 
     static GameObject sliderObject;
     static Slider slider;
+    static RectTransform sliderTransform;
 
     // Use this for initialization
     void Start () {
         text = GameObject.Find("DetailText").GetComponent<Text>();
-
         sliderObject = GameObject.Find("Slider");
+        sliderTransform = sliderObject.GetComponent<RectTransform>();
 
     }
 
@@ -55,7 +56,7 @@ public class SliderScript : MonoBehaviour {
     public static void EnableSlider(float minValue)
     {
         slider = sliderObject.GetComponent<Slider>();
-        sliderObject.transform.position = new Vector3(460.5f, 25.0f, 0.0f);
+        sliderTransform.anchoredPosition = new Vector3(0.0f, 100.0f, 0.0f);
         slider.minValue = minValue;
         slider.value = minValue;
         text.text = dict[minValue];
@@ -65,7 +66,7 @@ public class SliderScript : MonoBehaviour {
     {
         keys = new List<float>();
         text.text = "";
-        sliderObject.transform.position = new Vector3(-999.0f, -999.0f, -999.0f);
+        sliderTransform.localPosition = new Vector3(-9999.0f, 100.0f, 0.0f);
     }
 
 

@@ -14,13 +14,12 @@ public class ModelScript : MonoBehaviour
 
     bool isSelected = false;
 
+    Quaternion existingRotation;
     GameObject[] gobjs;
 
     public Text buttonText;
-
+    GameObject capsuleObject;
     LeanScale leanScaleScript;
-
-    GameObject slider;
 
     // Rotation
     private void OnMouseDrag()
@@ -41,7 +40,13 @@ public class ModelScript : MonoBehaviour
         Debug.Log(gameObject.name);
         leanScaleScript = gameObject.GetComponent<LeanScale>();
         leanScaleScript.enabled = false;
-        slider = GameObject.Find("Slider");
+        string capsuleName = gameObject.name + "Capsule";
+        Transform capsuleTransform = transform.Find(capsuleName);
+        if (capsuleTransform)
+        {
+            capsuleObject = capsuleTransform.gameObject;
+            capsuleTransform.localPosition = Vector3.zero;
+        }
     }
 
 
@@ -49,27 +54,44 @@ public class ModelScript : MonoBehaviour
     {
         ResetAll();
         gameObject.SetActive(true);
-        x = transform.position.x;
-        y = transform.position.y;
-        z = transform.position.z;
+        x = transform.localPosition.x;
+        y = transform.localPosition.y;
+        z = transform.localPosition.z;
+        Debug.Log(x + ", " + y + ", " + z);
         scaleX = transform.localScale.x;
         scaleY = transform.localScale.y;
         scaleZ = transform.localScale.z;
-        transform.position = new Vector3(0.0f, y, 0.0f);
+        existingRotation = transform.rotation;
+        if (PositionDictionary.Data.ContainsKey(gameObject.name))
+        {
+            transform.localPosition = PositionDictionary.Data[gameObject.name];
+        }
+        else
+        {
+            transform.localPosition = new Vector3(0.0f, y, 0.0f);
+        }
         ResetButtonScript.SetModelPosition(UnselectModel);
         SliderScript.SetTextData(gameObject.name);
         leanScaleScript.enabled = true;
+        if (capsuleObject)
+        {
+            capsuleObject.SetActive(false);
+        }
     }
 
     private void UnselectModel()
     {
         ResetAll();
-        transform.position = new Vector3(x, y, z);
-        transform.rotation = new Quaternion();
+        transform.localPosition = new Vector3(x, y, z);
+        transform.rotation = existingRotation;
         transform.localScale = new Vector3(scaleX, scaleY, scaleZ);
         ResetButtonScript.DisableButton();
         SliderScript.DisableSlider();
         leanScaleScript.enabled = false;
+        if (capsuleObject)
+        {
+            capsuleObject.SetActive(true);
+        }
     }
 
     private void ResetAll()

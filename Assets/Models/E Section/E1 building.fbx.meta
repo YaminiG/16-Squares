@@ -271,7 +271,22 @@ ModelImporter:
     4300080: pCube34
     4300082: pCube35
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Default_Material
+    second: {fileID: 2100000, guid: bbd932e9d37412a418d3e260d2421d7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn1
+    second: {fileID: 2100000, guid: bf062feda40bc804f982b05b1c6da12e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 1c544845db764944ab5dc5e3d943734a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
